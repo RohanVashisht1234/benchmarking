@@ -29,10 +29,10 @@ jobs:
 
       - name: Compile and run Zig program
         run: |
-          zig build-exe zig/main.zig
+          zig build-exe zig/main.zig -OReleaseFast
           time ./main
 
       - name: Compile and run Rust program
         run: |
-          cargo build --release --manifest-path rust/Cargo.toml
-          time target/release/main
+          rustc -C opt-level=3 ./rust/main
+          time ./main
