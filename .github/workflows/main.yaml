@@ -14,7 +14,8 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: mlugg/setup-zig@v1
 
       - name: Set up C Environment
         run: |
@@ -25,12 +26,6 @@ jobs:
         run: |
           gcc -O3 c/main.c -o c_program
           time ./c_program
-
-      - name: Set up Zig Environment
-        run: |
-          curl -sSL https://ziglang.org/download/index.json | jq -r '.[0].url' | xargs curl -L -o zig.tar.xz
-          tar -xf zig.tar.xz
-          export PATH=$PWD/zig:$PATH
 
       - name: Compile and run Zig program
         run: |
