@@ -34,5 +34,5 @@ jobs:
 
       - name: Compile and run Rust program
         run: |
-          rustc -C opt-level=3 ./rust/main
+          rustc -C opt-level=3 ./rust/main.rs
           time ./main
