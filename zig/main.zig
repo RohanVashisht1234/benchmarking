@@ -9,16 +9,12 @@ fn generate_fibonacci() void {
     for (2..LIMIT) |i| {
         fib[i] = fib[i - 1] + fib[i - 2];
     }
+    return;
 }
 
-pub fn main() !void {
-    var now = try std.time.Timer.start();
-
-    // Code block to measure.
-    {
-        generate_fibonacci();
-    }
-
+pub fn main() void {
+    var now = std.time.Timer.start() catch return;
+    generate_fibonacci();
     const elapsed = now.read();
     std.debug.print("Zig: in {} nanoseconds.", .{elapsed});
 }
