@@ -9,7 +9,6 @@ fn generate_fibonacci() void {
     for (2..LIMIT) |i| {
         fib[i] = fib[i - 1] + fib[i - 2];
     }
-    return;
 }
 
 pub fn main() void {

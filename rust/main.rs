@@ -13,12 +13,7 @@ fn generate_fibonacci() {
 
 fn main() {
     let now = Instant::now();
-
-    // Code block to measure.
-    {
-        generate_fibonacci();
-    }
-
+    generate_fibonacci();
     let elapsed = now.elapsed();
     println!("Rust: in {} nanoseconds.", elapsed.as_nanos());
 }
