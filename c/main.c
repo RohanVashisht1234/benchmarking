@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-const unsigned int LIMIT = 100;
+const unsigned int LIMIT = 100000000;
 
 void generate_fibonacci() {
     unsigned long long fib[LIMIT];

@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const LIMIT: usize = 100;
+const LIMIT: usize = 100_000;
 
 fn generate_fibonacci() {
     let mut fib = [0u128; LIMIT];
