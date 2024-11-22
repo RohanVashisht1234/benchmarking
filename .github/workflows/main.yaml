@@ -28,14 +28,14 @@ jobs:
       - name: Compile and run C program
         run: |
           gcc -O3 c/main.c -o c_program
-          hyperfine --runs 5 ./c_program
+          hyperfine --runs 5000 ./c_program
 
       - name: Compile and run Zig program
         run: |
           zig build-exe zig/main.zig -OReleaseFast
-          hyperfine --runs 5 ./main
+          hyperfine --runs 5000 ./main
 
       - name: Compile and run Rust program
         run: |
           rustc -C opt-level=3 ./rust/main.rs
-          hyperfine --runs 5 ./main
+          hyperfine --runs 5000 ./main
