@@ -1,24 +1,24 @@
 const std = @import("std");
-const stdout = std.io.getStdOut().writer();
-const LIMIT = 100;
 
-fn generateFibonacci(fib: []u128, n: usize) void {
+const LIMIT: usize = 100;
+
+fn generate_fibonacci() void {
+    var fib: [LIMIT]u128 = undefined;
     fib[0] = 0;
     fib[1] = 1;
-    for (0..n - 2) |i| {
-        fib[i + 2] = fib[i + 1] + fib[i];
+    for (2..LIMIT) |i| {
+        fib[i] = fib[i - 1] + fib[i - 2];
     }
 }
 
-fn function_to_benchmark() void {
-    var fib: [LIMIT]u128 = undefined;
-    generateFibonacci(&fib, LIMIT);
-}
-
 pub fn main() !void {
-    var t = std.time.Timer.start() catch unreachable;
-    function_to_benchmark();
-    const elapsed = t.read();
+    var now = try std.time.Timer.start();
 
-    std.debug.print("Zig: {} nanoseconds.\n", .{elapsed});
+    // Code block to measure.
+    {
+        generate_fibonacci();
+    }
+
+    const elapsed = now.read();
+    std.debug.print("Zig: in {} nanoseconds.", .{elapsed});
 }
