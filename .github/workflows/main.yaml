@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: mlugg/setup-zig@v1
+      - uses: hecrj/setup-rust-action@v2
 
       - name: Set up C Environment
         run: |
@@ -30,11 +31,6 @@ jobs:
         run: |
           zig build-exe zig/main.zig
           time ./main
-
-      - name: Set up Rust Environment
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
-          source $HOME/.cargo/env
 
       - name: Compile and run Rust program
         run: |
